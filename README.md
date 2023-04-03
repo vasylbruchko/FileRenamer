@@ -50,6 +50,7 @@ Step 4: Select the source and destination directory. Customer directory is made 
 NOTE: The user does not have to select all four directory, but each pair needs to be chosen.
 
 Step 5: Click on the Rename Customer Files or Rename Name.txt Files button.
+
 NOTE: If you didn't select a source and destination, the button will show an Error.
 
 Step 6: Check the counter to verify how many files were succesfully processesed. Check the output.log in the directory where juniper_renamer.py exists to identify the unnamed files.
