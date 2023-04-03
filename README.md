@@ -37,7 +37,7 @@ Replace scriptname.py with the name of your Python script.
 
 
 
-RUNNGIN juniper_renamer.py:
+Running juniper_renamer.py:
 
 Step1: Navigate to the directory where juniper_renamer.py is located
 
