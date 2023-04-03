@@ -39,19 +39,19 @@ Replace scriptname.py with the name of your Python script.
 
 Running juniper_renamer.py:
 
-Step1: Navigate to the directory where juniper_renamer.py is located
+Step 1: Navigate to the directory where juniper_renamer.py is located
 
-Step2: Right click in directory and select "Open in Terminal" for Windows 11 or "Open command window here" for Windows 10 
+Step 2: Right click in directory and select "Open in Terminal" for Windows 11 or "Open command window here" for Windows 10 
 
-Step3: In the Command Prompt type the following:
+Step 3: In the Command Prompt type the following:
 
 	python .\juniper_renamer.py
 	  
-Step4: Select the source and destination directory. Customer directory is made up of additional directory containing running.txt files. Name.txt directory is the directory with multiple NAMES.txt files.
+Step 4: Select the source and destination directory. Customer directory is made up of additional directory containing running.txt files. Name.txt directory is the directory with multiple NAMES.txt files.
 
 NOTE: The user does not have to select all four directory, but each pair needs to be chosen.
 
-Step5: Click on the Rename Customer Files or Rename Name.txt Files button.
+Step 5: Click on the Rename Customer Files or Rename Name.txt Files button.
 NOTE: If you didn't select a source and destination, the button will show an Error.
 
-Step6: Check the counter to verify how many files were succesfully processesed. Check the output.log in the directory where juniper_renamer.py exists to identify the unnamed files.
+Step 6: Check the counter to verify how many files were succesfully processesed. Check the output.log in the directory where juniper_renamer.py exists to identify the unnamed files.
