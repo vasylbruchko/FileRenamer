@@ -1,4 +1,4 @@
-GETTING STARTED:
+Getting Started:
 
 Step 1: Install Python from the Microsoft Store
 
