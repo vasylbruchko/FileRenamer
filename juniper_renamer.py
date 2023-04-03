@@ -118,7 +118,7 @@ class FileRenamer:
                         # Extract the hostname from the file
                         with open(os.path.join(subdir, filename), 'r') as f:
                             config = f.read()
-                        hostname_pattern = r'hostname\s+(\S+);'
+                        hostname_pattern = r'host-name\s+(\S+);'
                         hostname_match = re.search(hostname_pattern, config)
                         self.RunningTotalCounter +=1
                         if hostname_match:
@@ -158,11 +158,11 @@ class FileRenamer:
             # Loop through all the subdirectories in the source directory
             for subdir, dirs, files in os.walk(self.sourcenames_dir):
                 for filename in files:
-                    if filename.endswith('.txt'):
+                    if filename.endswith('.cfg'):
                         # Extract the hostname from the file
                         with open(os.path.join(subdir, filename), 'r') as f:
                             config = f.read()
-                        hostname_pattern = r'hostname\s+(\S+);'
+                        hostname_pattern = r'host-name\s+(\S+);'
                         hostname_match = re.search(hostname_pattern, config)
                         self.TxtTotalCounter +=1
                         if hostname_match:
