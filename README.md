@@ -30,13 +30,11 @@ To execute a Python script, navigate to the directory where the script is locate
     python scriptname.py
 
 Replace scriptname.py with the name of your Python script.
-
-
-
-
-
-
-
+<br>
+<br>
+<br>
+<br>
+<br>
 Running juniper_renamer.py:
 
 Step 1: Navigate to the directory where juniper_renamer.py is located
