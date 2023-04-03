@@ -1,0 +1,3 @@
+-Seperate unknowns to different files
+-Crate destination with Todays Date and Time
+-Open winmerge directly to destiantion fodlers
