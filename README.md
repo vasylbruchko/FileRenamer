@@ -44,7 +44,9 @@ Step1: Navigate to the directory where juniper_renamer.py is located
 Step2: Right click in directory and select "Open in Terminal" for Windows 11 or "Open command window here" for Windows 10 
 
 Step3: In the Command Prompt type the following:
-	  python .\juniper_renamer.py
+
+	python .\juniper_renamer.py
+	  
 Step4: Select the source and destination directory. Customer directory is made up of additional directory containing running.txt files. Name.txt directory is the directory with multiple NAMES.txt files.
 
 NOTE: The user does not have to select all four directory, but each pair needs to be chosen.
