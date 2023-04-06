@@ -3,6 +3,7 @@ import re
 import tkinter as tk
 from tkinter import filedialog
 import logging
+import datetime
 
 # Create a logger object
 logger = logging.getLogger(__name__)
@@ -23,24 +24,34 @@ logger.addHandler(stream_handler)
 # Use the logger to log messages
 logger.info("Program started")
 
-
 class FileRenamer:
     def browse_sourcerunning_dir(self):
         self.sourcerunning_dir = filedialog.askdirectory()
         self.source_entry.delete(0, tk.END)
         self.source_entry.insert(0, self.sourcerunning_dir)      
     def browse_destrunning_dir(self):
-        self.destrunning_dir = filedialog.askdirectory()
+        destrunning_dir = filedialog.askdirectory()
+        today = datetime.datetime.now().strftime("%Y-%m-%d_%H-%M")
+        self.destrunning_dir = os.path.join(destrunning_dir, today)
+        os.makedirs(self.destrunning_dir, exist_ok=True)
         self.dest_entry.delete(0, tk.END)
-        self.dest_entry.insert(0, self.destrunning_dir)              
+        self.dest_entry.insert(0, self.destrunning_dir)         
     def browse_sourcenames_dir(self):
         self.sourcenames_dir = filedialog.askdirectory()
         self.names_entry.delete(0, tk.END)
         self.names_entry.insert(0, self.sourcenames_dir)
     def browse_destname_dir(self):
-        self.destname_dir = filedialog.askdirectory()
+        destname_dir = filedialog.askdirectory()
+        today = datetime.datetime.now().strftime("%Y-%m-%d_%H-%M")
+        self.destname_dir = os.path.join(destname_dir, today)
+        os.makedirs(self.destname_dir, exist_ok=True)
         self.destname_entry.delete(0, tk.END)
         self.destname_entry.insert(0, self.destname_dir)
+                
+    def compare_directories(self, directory1, directory2):
+        winmerge_path = "C:/Program Files/WinMerge/WinMergeU.exe"        # change the path to match the location of WinMerge on your system
+        os.system(f'cmd /c "{winmerge_path}" {directory1} {directory2}')
+        
         
     def __init__(self, master):
         self.master = master
@@ -65,7 +76,7 @@ class FileRenamer:
         self.source_entry.grid(row=1, column=1, padx=5, pady=5)
         self.source_button = tk.Button(master, text="Browse", command=self.browse_sourcerunning_dir, fg='blue')
         self.source_button.grid(row=1, column=2, padx=5, pady=5)
-
+        
         self.dest_label = tk.Label(master, text="Output Customer Directory:", fg='blue')
         self.dest_label.grid(row=2, column=0, padx=5, pady=5, sticky='w')
         self.dest_entry = tk.Entry(master, width=50)
@@ -75,7 +86,7 @@ class FileRenamer:
         
         self.rename_button = tk.Button(master, text="Rename Customer Files", command=self.rename_running_files, fg='blue')
         self.rename_button.grid(row=3, column=1, padx=5, pady=5)
-                  
+        
         # Create a label widget to display the counter for Customers
         self.countlabel = tk.Label(self.master, text="Renamed Customer's Files", fg='blue' )
         self.countlabel.grid(row=4, column=0, ipadx=5, pady=5, sticky='w') 
@@ -97,14 +108,18 @@ class FileRenamer:
         self.destname_button = tk.Button(master, text="Browse", command=self.browse_destname_dir, fg='red')
         self.destname_button.grid(row=6, column=2, padx=5, pady=5)
         
-        self.rename_buttonNAMES = tk.Button(master, text="Rename Files", command=self.rename_txt_files, fg='red')
+        self.rename_buttonNAMES = tk.Button(master, text="Rename Name.txt Files", command=self.rename_txt_files, fg='red')
         self.rename_buttonNAMES.grid(row=7, column=1, padx=5, pady=5)
         
         # Create a label widget to display the counter for Names Directory
-        self.countlabelNAMES = tk.Label(self.master, text="Renamed Files" , fg='red')
+        self.countlabelNAMES = tk.Label(self.master, text="Renamed Name.txt Files" , fg='red')
         self.countlabelNAMES.grid(row=8, column=0, ipadx=5, pady=5, sticky='w') 
         self.labelNAMES = tk.Label(self.master, text=f"{self.TxtRenamedCounter} out of {self.TxtTotalCounter}", fg='red')
         self.labelNAMES.grid(row=8, column=1, padx=5, pady=5, sticky='w')
+        
+        #Create winmerge button 
+        self.winmerge_button = tk.Button(master, text="Compare Destinations in WinMerge", command=self.launch_winmerge, fg='black')
+        self.winmerge_button.grid(row=9, column=1, padx=5, pady=5)       
         
     def rename_running_files(self):
         renamed = False
@@ -148,12 +163,14 @@ class FileRenamer:
             self.rename_button.config(text="Files renamed successfully!")
         else:
             # Display an error message if source or destination directory is not selected
-            self.rename_button.config(text="Error: Please select source and destination directories.") 
+            self.rename_button.config(text="Error: Please select source and destination directories.")
             
     def rename_txt_files(self):      
         renamed = False       
         self.TxtRenamedCounter=0
         self.TxtTotalCounter=0
+        today = datetime.date.today().strftime("%Y-%m-%d")
+        directory_path = os.path.join(self.destname_dir, today)
         if self.sourcenames_dir and self.destname_dir:
             # Loop through all the subdirectories in the source directory
             for subdir, dirs, files in os.walk(self.sourcenames_dir):
@@ -193,8 +210,19 @@ class FileRenamer:
         else:
             # Display an error message if source or destination directory is not selected
             self.rename_buttonNAMES.config(text="Error: Please select source and destination directories.") 
-
-
+            
+    def launch_winmerge(self): 
+        if self.destrunning_dir and self.destname_dir:
+            directory1 = self.destrunning_dir
+            directory2 = self.destname_dir
+            self.compare_directories(directory1, directory2)
+            self.winmerge_button .config(text="WinMerge opened!")
+            logger.info(f"Winmerge opened")
+        else:
+            # Display an error message if source or destination directory is not selected
+            self.winmerge_button .config(text="Error: Please select two destination directories.")
+            logger.info(f"WinMerge missing directories to compare")
+            
 root = tk.Tk()
 renamer = FileRenamer(root)
 root.mainloop()
