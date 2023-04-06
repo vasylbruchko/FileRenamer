@@ -1,4 +1,30 @@
-Getting Started:
+Running juniper_renamer.py:
+
+Prerequisites: Verify python 3.10 or above is installed. Follow Getting Python below if missing. 
+
+Step 1: Navigate to the directory where juniper_renamer.py is located
+
+Step 2: Right click in directory and select "Open in Terminal" for Windows 11 or "Open command window here" for Windows 10 
+
+Step 3: In the Command Prompt type the following:
+
+	python .\juniper_renamer.py
+	  
+Step 4: Select the source and destination directory. Customer directory is made up of additional directory containing running.txt files. Name.cfg directory is the directory with multiple NAMES.cfg files. The output directory will create a new directory with the timestamp. 
+
+NOTE: The user does not have to select all four directory, but each pair needs to be chosen.
+
+Step 5: Click on the Rename Customer Files or Rename Name.cfg Files button.
+
+NOTE: If you didn't select a source and destination, the button will show an Error.
+
+Step 6: Check the counter to verify how many files were succesfully processesed. Check the output.log in the directory where juniper_renamer.py exists to identify the unnamed files.
+<br>
+<br>
+<br>
+<br>
+<br>
+Getting Python:
 
 Step 1: Install Python from the Microsoft Store
 
@@ -30,29 +56,4 @@ To execute a Python script, navigate to the directory where the script is locate
     python scriptname.py
 
 Replace scriptname.py with the name of your Python script.
-<br>
-<br>
-<br>
-<br>
-<br>
-Running juniper_renamer.py:
 
-Prerequisites: Verify python 3.10 or above is installed. 
-
-Step 1: Navigate to the directory where juniper_renamer.py is located
-
-Step 2: Right click in directory and select "Open in Terminal" for Windows 11 or "Open command window here" for Windows 10 
-
-Step 3: In the Command Prompt type the following:
-
-	python .\juniper_renamer.py
-	  
-Step 4: Select the source and destination directory. Customer directory is made up of additional directory containing running.txt files. Name.cfg directory is the directory with multiple NAMES.cfg files. The output directory will create a new directory with the timestamp. 
-
-NOTE: The user does not have to select all four directory, but each pair needs to be chosen.
-
-Step 5: Click on the Rename Customer Files or Rename Name.cfg Files button.
-
-NOTE: If you didn't select a source and destination, the button will show an Error.
-
-Step 6: Check the counter to verify how many files were succesfully processesed. Check the output.log in the directory where juniper_renamer.py exists to identify the unnamed files.
