@@ -37,6 +37,8 @@ Replace scriptname.py with the name of your Python script.
 <br>
 Running juniper_renamer.py:
 
+Prerequisites: Verify python 3.10 or above is installed. 
+
 Step 1: Navigate to the directory where juniper_renamer.py is located
 
 Step 2: Right click in directory and select "Open in Terminal" for Windows 11 or "Open command window here" for Windows 10 
@@ -45,11 +47,11 @@ Step 3: In the Command Prompt type the following:
 
 	python .\juniper_renamer.py
 	  
-Step 4: Select the source and destination directory. Customer directory is made up of additional directory containing running.txt files. Name.txt directory is the directory with multiple NAMES.txt files.
+Step 4: Select the source and destination directory. Customer directory is made up of additional directory containing running.txt files. Name.cfg directory is the directory with multiple NAMES.cfg files. The output directory will create a new directory with the timestamp. 
 
 NOTE: The user does not have to select all four directory, but each pair needs to be chosen.
 
-Step 5: Click on the Rename Customer Files or Rename Name.txt Files button.
+Step 5: Click on the Rename Customer Files or Rename Name.cfg Files button.
 
 NOTE: If you didn't select a source and destination, the button will show an Error.
 

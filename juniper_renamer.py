@@ -94,25 +94,25 @@ class FileRenamer:
         self.label.grid(row=4, column=1, padx=5, pady=5, sticky='w')
         
         #Create Names directory and button 
-        self.names_label = tk.Label(master, text="Name.txt Directory:", fg='red')
+        self.names_label = tk.Label(master, text="Name.cfg Directory:", fg='red')
         self.names_label.grid(row=5, column=0, padx=5, pady=5, sticky='w')
         self.names_entry = tk.Entry(master, width=50)
         self.names_entry.grid(row=5, column=1, padx=5, pady=5)
         self.names_button = tk.Button(master, text="Browse", command=self.browse_sourcenames_dir, fg='red')
         self.names_button.grid(row=5, column=2, padx=5, pady=5)
         
-        self.destname_label = tk.Label(master, text="Output Names.txt Directory:", fg='red')
+        self.destname_label = tk.Label(master, text="Output Name.cfg Directory:", fg='red')
         self.destname_label.grid(row=6, column=0, padx=5, pady=5, sticky='w')
         self.destname_entry = tk.Entry(master, width=50)
         self.destname_entry.grid(row=6, column=1, padx=5, pady=5)
         self.destname_button = tk.Button(master, text="Browse", command=self.browse_destname_dir, fg='red')
         self.destname_button.grid(row=6, column=2, padx=5, pady=5)
         
-        self.rename_buttonNAMES = tk.Button(master, text="Rename Name.txt Files", command=self.rename_txt_files, fg='red')
+        self.rename_buttonNAMES = tk.Button(master, text="Rename Name.cfg Files", command=self.rename_txt_files, fg='red')
         self.rename_buttonNAMES.grid(row=7, column=1, padx=5, pady=5)
         
         # Create a label widget to display the counter for Names Directory
-        self.countlabelNAMES = tk.Label(self.master, text="Renamed Name.txt Files" , fg='red')
+        self.countlabelNAMES = tk.Label(self.master, text="Renamed Name.cfg Files" , fg='red')
         self.countlabelNAMES.grid(row=8, column=0, ipadx=5, pady=5, sticky='w') 
         self.labelNAMES = tk.Label(self.master, text=f"{self.TxtRenamedCounter} out of {self.TxtTotalCounter}", fg='red')
         self.labelNAMES.grid(row=8, column=1, padx=5, pady=5, sticky='w')
