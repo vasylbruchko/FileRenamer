@@ -217,11 +217,11 @@ class FileRenamer:
             directory2 = self.destname_dir
             self.compare_directories(directory1, directory2)
             self.winmerge_button .config(text="WinMerge opened!")
-            logger.info(f"Winmerge opened")
+            logger.info("Winmerge opened")
         else:
             # Display an error message if source or destination directory is not selected
             self.winmerge_button .config(text="Error: Please select two destination directories.")
-            logger.info(f"WinMerge missing directories to compare")
+            logger.info("WinMerge missing directories to compare")
             
 root = tk.Tk()
 renamer = FileRenamer(root)
