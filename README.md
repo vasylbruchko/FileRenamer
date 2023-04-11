@@ -21,6 +21,7 @@ NOTE: If you didn't select a source and destination, the button will show an Err
 Step 6: Check the counter to verify how many files were succesfully processesed. Check the output.log in the directory where file_renamer.py exists to identify the unnamed files.
 <br>
 <br>
+<br>
 Changing matching criteria:
 
 Step 1: Find the two lines with hostname_pattern and change the entries between the single quotes ('') 
