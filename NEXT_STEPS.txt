@@ -1,2 +1,3 @@
 -Seperate unknowns to different files
 -Create unit test
+-Allow drop down for regex searches and custom regex
