@@ -1,14 +1,14 @@
-Running juniper_renamer.py:
+Running file_renamer.py:
 
 Prerequisites: Verify python 3.10 or above is installed. Follow Getting Python below if missing. 
 
-Step 1: Navigate to the directory where juniper_renamer.py is located
+Step 1: Navigate to the directory where file_renamer.py is located
 
 Step 2: Right click in directory and select "Open in Terminal" for Windows 11 or "Open command window here" for Windows 10 
 
 Step 3: In the Command Prompt type the following:
 
-	python .\juniper_renamer.py
+	python .\file_renamer.py
 	  
 Step 4: Select the source and destination directory. Customer directory is made up of additional directory containing running.txt files. Name.cfg directory is the directory with multiple NAMES.cfg files. The output directory will create a new directory with the timestamp. 
 
@@ -18,9 +18,13 @@ Step 5: Click on the Rename Customer Files or Rename Name.cfg Files button.
 
 NOTE: If you didn't select a source and destination, the button will show an Error.
 
-Step 6: Check the counter to verify how many files were succesfully processesed. Check the output.log in the directory where juniper_renamer.py exists to identify the unnamed files.
+Step 6: Check the counter to verify how many files were succesfully processesed. Check the output.log in the directory where file_renamer.py exists to identify the unnamed files.
 <br>
 <br>
+Changing matching criteria:
+Step 1: Find the two lines with hostname_pattern and change the entries between the single quotes ('') 
+   Example: Default hostname_pattern = r'host-name\s+(\S+);' will search for the following name pattern: host-name filename; 
+   Example 1: hostname_pattern = r'hostname\s+"(\S+)"' will search for the following name pattern: hostname "filename" 
 <br>
 <br>
 <br>
