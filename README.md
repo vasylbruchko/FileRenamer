@@ -22,9 +22,12 @@ Step 6: Check the counter to verify how many files were succesfully processesed.
 <br>
 <br>
 Changing matching criteria:
+
 Step 1: Find the two lines with hostname_pattern and change the entries between the single quotes ('') 
-   Example: Default hostname_pattern = r'host-name\s+(\S+);' will search for the following name pattern: host-name filename; 
-   Example 1: hostname_pattern = r'hostname\s+"(\S+)"' will search for the following name pattern: hostname "filename" 
+   
+	Default: hostname_pattern = r'host-name\s+(\S+);' will search for the following name pattern: host-name filename; 
+   
+	Example 1: hostname_pattern = r'hostname\s+"(\S+)"' will search for the following name pattern: hostname "filename" 
 <br>
 <br>
 <br>
