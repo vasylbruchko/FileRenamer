@@ -4,6 +4,7 @@ import tkinter as tk
 from tkinter import filedialog
 import logging
 import datetime
+import subprocess
 
 # Create a logger object
 logger = logging.getLogger(__name__)
@@ -50,8 +51,8 @@ class FileRenamer:
                 
     def compare_directories(self, directory1, directory2):
         winmerge_path = "C:/Program Files/WinMerge/WinMergeU.exe"        # change the path to match the location of WinMerge on your system
-        os.system(f'cmd /c "{winmerge_path}" {directory1} {directory2}')
-        
+        command = f"{winmerge_path} {directory1} {directory2}"
+        subprocess.Popen(command)
         
     def __init__(self, master):
         self.master = master
@@ -150,8 +151,6 @@ class FileRenamer:
                             logger.info(f"Renamed {source_path} to {dest_path}")
                             renamed = True
                         else:
-                            hostname = 'unknown'
-                            new_filename = f"{hostname}.txt"
                             source_path = os.path.join(subdir, filename)
                             logger.info(f"Didn't change {source_path}")  
             #Show in log
@@ -196,8 +195,6 @@ class FileRenamer:
                             logger.info(f"Renamed {source_path} to {dest_path}")
                             renamed = True
                         else:
-                            hostname = 'unknown'
-                            new_filename = f"{hostname}.txt"
                             source_path = os.path.join(subdir, filename)
                             logger.info(f"Didn't change {source_path}") 
             #Show in log
