@@ -26,7 +26,7 @@ Changing matching criteria:
 
 Step 1: Find the two lines with hostname_pattern.
 
-Step 2: Change the entries between the single quotes ('') 
+Step 2: Change the entries between the single quotes. The script matches on the match.group(1) or essentially anything in the paranthesis () within. 
    
 	Default: hostname_pattern = r'host-name\s+(\S+);' will search for the following name pattern: host-name filename; 
    
