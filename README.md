@@ -8,31 +8,53 @@ Step 2: Right click in directory and select "Open in Terminal" for Windows 11 or
 
 Step 3: In the Command Prompt type the following:
 
-	python .\file_renamer.py
-	  
-Step 4: Select the source and destination directory. Customer directory is made up of additional directory containing running.txt files. Name.cfg directory is the directory with multiple NAMES.cfg files. The output directory will create a new directory with the timestamp. 
+	python.exe .\file_renamer.py
+
+Step 4: Select search criteria which will be executed on the selected files. This can be changed at any point. 
+
+Step 5: Select the source and destination directory. Name.txt directory is made up of files and directories containing Name.txt files. Name.cfg directory is the directory made up of files and directories containing Name.cfg files. The output directories will create a new directory with the current timestamp when the output directory is selected. 
 
 NOTE: The user does not have to select all four directory, but each pair needs to be chosen.
 
-Step 5: Click on the Rename Customer Files or Rename Name.cfg Files button.
+Step 6: Click on the Rename Button in each respective section. 
 
 NOTE: If you didn't select a source and destination, the button will show an Error.
 
-Step 6: Check the counter to verify how many files were succesfully processesed. Check the output.log in the directory where file_renamer.py exists to identify the unnamed files.
+Step 7: Check the counter to verify how many files were succesfully processesed. Check the output.log in the directory where file_renamer.py exists to identify the unnamed files.
 <br>
 <br>
 <br>
-Changing matching criteria:
+Adding a search criteria:
 
-Step 1: Find the two lines with hostname_pattern.
+Step 1: Line 69 has the criteria option, add your new criteria seperate by a comma and enclosed in a single quote. 
 
-Step 2: Change the entries between the single quotes. The script matches on the match.group(1) or essentially anything in the paranthesis () within. 
-   
-	Default: hostname_pattern = r'host-name\s+(\S+);' will search for the following name pattern: host-name filename; 
-   
-	Example 1: hostname_pattern = r'hostname\s+"(\S+)"' will search for the following name pattern: hostname "filename" 
+	Default: options = ['host-name name1;', 'hostname "name2"', 'host-name "name3"', 'hostname name4']
 	
-	Example 2: hostname_pattern = r'hostname\s+(\S+)' will search for the following name pattern: hostname filename
+	Example with a new criteria: options = ['host-name name1;', 'hostname "name2"', 'host-name "name3"', 'hostname name4', 'search5 name5']
+	
+Step 2: Add the new match criteria in the rename_txt_files and rename_cfg_files definitions. Use the tools in the note below to create your search criteria. 
+   
+	Default:         
+	if selected_value == 'host-name name1;':
+            selected_search = r'host-name\s+(\S+);'
+        elif selected_value == 'hostname "name2"':
+            selected_search = r'hostname\s+"(\S+)"'
+        elif selected_value == 'host-name "name3"':
+            selected_search = r'host-name\s+"(\S+)"'           
+        elif selected_value == 'hostname name4':
+            selected_search = r'hostname\s+\"?(\S+?)\"'
+   
+	Example with new criteria: 	
+	if selected_value == 'host-name name1;':
+            selected_search = r'host-name\s+(\S+);'
+        elif selected_value == 'hostname "name2"':
+            selected_search = r'hostname\s+"(\S+)"'
+        elif selected_value == 'host-name "name3"':
+            selected_search = r'host-name\s+"(\S+)"'           
+        elif selected_value == 'hostname name4':
+            selected_search = r'hostname\s+\"?(\S+?)\"'
+        elif selected_value == 'search5 name5':
+            selected_search = r'search5\s+(\S+)'
 	
 	
 NOTE: Use https://www.dataquest.io/blog/regex-cheatsheet/ to help you choose the correct regular expression and test it with https://regex101.com/
