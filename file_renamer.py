@@ -94,7 +94,7 @@ class FileRenamer:
         self.dest_button = tk.Button(master, text="Browse", command=self.browse_destrunning_dir, fg='blue')
         self.dest_button.grid(row=3, column=2, padx=5, pady=5)
         
-        self.rename_button = tk.Button(master, text="Rename Name.txt Files", command=self.rename_running_files, fg='blue')
+        self.rename_button = tk.Button(master, text="Rename Name.txt Files", command=self.rename_txt_files, fg='blue')
         self.rename_button.grid(row=4, column=1, padx=5, pady=5)
         
         # Create a label widget to display the counter for Name.txt renamed
@@ -118,7 +118,7 @@ class FileRenamer:
         self.destname_button = tk.Button(master, text="Browse", command=self.browse_destname_dir, fg='red')
         self.destname_button.grid(row=7, column=2, padx=5, pady=5)
         
-        self.rename_buttonNAMES = tk.Button(master, text="Rename Name.cfg Files", command=self.rename_txt_files, fg='red')
+        self.rename_buttonNAMES = tk.Button(master, text="Rename Name.cfg Files", command=self.rename_cfg_files, fg='red')
         self.rename_buttonNAMES.grid(row=8, column=1, padx=5, pady=5)
         
         # Create a label widget to display the counter for Names Directory
@@ -139,7 +139,7 @@ class FileRenamer:
         self.regex_selector()
 
            
-    def rename_running_files(self):
+    def rename_txt_files(self):
         renamed = False
         self.RunningRenamedCounter=0
         self.RunningTotalCounter=0   
@@ -190,7 +190,7 @@ class FileRenamer:
             # Display an error message if source or destination directory is not selected
             self.rename_button.config(text="Error: Please select source and destination directories.")
             
-    def rename_txt_files(self):      
+    def rename_cfg_files(self):      
         renamed = False       
         self.TxtRenamedCounter=0
         self.TxtTotalCounter=0
