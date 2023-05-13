@@ -54,6 +54,10 @@ class FileRenamer:
         command = f"{winmerge_path} {directory1} {directory2}"
         subprocess.Popen(command)
         
+    def regex_selector(self):
+        option_menu = tk.OptionMenu(self.master, self.selected_option, *self.options)
+        option_menu.grid (row=1, column=1, padx=5, pady=5)   
+        
     def __init__(self, master):
         self.master = master
         master.title("File Renamer")
@@ -62,79 +66,101 @@ class FileRenamer:
         self.sourcenames_dir = ''
         self.destrunning_dir = ''
         self.destname_dir = ''
-        
+        options = ['host-name name1;', 'hostname "name2"', 'host-name "name3"', 'hostname name4']
+
         #Create counter variables
         self.RunningRenamedCounter = 0
         self.RunningTotalCounter=0
         self.TxtRenamedCounter = 0
         self.TxtTotalCounter=0
         
+        #Create selector label
+        self.searchcrit = tk.Label(self.master, text="Select search criteria" )
+        self.searchcrit.grid(row=0, column=1, ipadx=5, pady=5)  
+               
         #Create Directory selectors
-        #Create Customer directory and button 
-        self.source_label = tk.Label(master, text="Customer Directory:", fg='blue')
-        self.source_label.grid(row=1, column=0, padx=5, pady=5, sticky='w')
+        #Create Name.txt directory and button 
+        self.source_label = tk.Label(master, text="Name.txt Directory:", fg='blue')
+        self.source_label.grid(row=2, column=0, padx=5, pady=5, sticky='w')
         self.source_entry = tk.Entry(master, width=50)
-        self.source_entry.grid(row=1, column=1, padx=5, pady=5)
+        self.source_entry.grid(row=2, column=1, padx=5, pady=5)
         self.source_button = tk.Button(master, text="Browse", command=self.browse_sourcerunning_dir, fg='blue')
-        self.source_button.grid(row=1, column=2, padx=5, pady=5)
+        self.source_button.grid(row=2, column=2, padx=5, pady=5)
         
-        self.dest_label = tk.Label(master, text="Output Customer Directory:", fg='blue')
-        self.dest_label.grid(row=2, column=0, padx=5, pady=5, sticky='w')
+        self.dest_label = tk.Label(master, text="Output Name.txt Directory:", fg='blue')
+        self.dest_label.grid(row=3, column=0, padx=5, pady=5, sticky='w')
         self.dest_entry = tk.Entry(master, width=50)
-        self.dest_entry.grid(row=2, column=1, padx=5, pady=5)
+        self.dest_entry.grid(row=3, column=1, padx=5, pady=5)
         self.dest_button = tk.Button(master, text="Browse", command=self.browse_destrunning_dir, fg='blue')
-        self.dest_button.grid(row=2, column=2, padx=5, pady=5)
+        self.dest_button.grid(row=3, column=2, padx=5, pady=5)
         
-        self.rename_button = tk.Button(master, text="Rename Customer Files", command=self.rename_running_files, fg='blue')
-        self.rename_button.grid(row=3, column=1, padx=5, pady=5)
+        self.rename_button = tk.Button(master, text="Rename Name.txt Files", command=self.rename_running_files, fg='blue')
+        self.rename_button.grid(row=4, column=1, padx=5, pady=5)
         
-        # Create a label widget to display the counter for Customers
-        self.countlabel = tk.Label(self.master, text="Renamed Customer's Files", fg='blue' )
-        self.countlabel.grid(row=4, column=0, ipadx=5, pady=5, sticky='w') 
+        # Create a label widget to display the counter for Name.txt renamed
+        self.countlabel = tk.Label(self.master, text="Renamed Name.txt Files", fg='blue' )
+        self.countlabel.grid(row=5, column=0, ipadx=5, pady=5, sticky='w') 
         self.label = tk.Label(self.master, text=f"{self.RunningRenamedCounter} out of {self.RunningTotalCounter}", fg='blue')
-        self.label.grid(row=4, column=1, padx=5, pady=5, sticky='w')
+        self.label.grid(row=5, column=1, padx=5, pady=5, sticky='w')
         
         #Create Names directory and button 
         self.names_label = tk.Label(master, text="Name.cfg Directory:", fg='red')
-        self.names_label.grid(row=5, column=0, padx=5, pady=5, sticky='w')
+        self.names_label.grid(row=6, column=0, padx=5, pady=5, sticky='w')
         self.names_entry = tk.Entry(master, width=50)
-        self.names_entry.grid(row=5, column=1, padx=5, pady=5)
+        self.names_entry.grid(row=6, column=1, padx=5, pady=5)
         self.names_button = tk.Button(master, text="Browse", command=self.browse_sourcenames_dir, fg='red')
-        self.names_button.grid(row=5, column=2, padx=5, pady=5)
+        self.names_button.grid(row=6, column=2, padx=5, pady=5)
         
         self.destname_label = tk.Label(master, text="Output Name.cfg Directory:", fg='red')
-        self.destname_label.grid(row=6, column=0, padx=5, pady=5, sticky='w')
+        self.destname_label.grid(row=7, column=0, padx=5, pady=5, sticky='w')
         self.destname_entry = tk.Entry(master, width=50)
-        self.destname_entry.grid(row=6, column=1, padx=5, pady=5)
+        self.destname_entry.grid(row=7, column=1, padx=5, pady=5)
         self.destname_button = tk.Button(master, text="Browse", command=self.browse_destname_dir, fg='red')
-        self.destname_button.grid(row=6, column=2, padx=5, pady=5)
+        self.destname_button.grid(row=7, column=2, padx=5, pady=5)
         
         self.rename_buttonNAMES = tk.Button(master, text="Rename Name.cfg Files", command=self.rename_txt_files, fg='red')
-        self.rename_buttonNAMES.grid(row=7, column=1, padx=5, pady=5)
+        self.rename_buttonNAMES.grid(row=8, column=1, padx=5, pady=5)
         
         # Create a label widget to display the counter for Names Directory
         self.countlabelNAMES = tk.Label(self.master, text="Renamed Name.cfg Files" , fg='red')
-        self.countlabelNAMES.grid(row=8, column=0, ipadx=5, pady=5, sticky='w') 
+        self.countlabelNAMES.grid(row=9, column=0, ipadx=5, pady=5, sticky='w') 
         self.labelNAMES = tk.Label(self.master, text=f"{self.TxtRenamedCounter} out of {self.TxtTotalCounter}", fg='red')
-        self.labelNAMES.grid(row=8, column=1, padx=5, pady=5, sticky='w')
+        self.labelNAMES.grid(row=9, column=1, padx=5, pady=5, sticky='w')
         
         #Create winmerge button 
         self.winmerge_button = tk.Button(master, text="Compare Destinations in WinMerge", command=self.launch_winmerge, fg='black')
-        self.winmerge_button.grid(row=9, column=1, padx=5, pady=5)       
+        self.winmerge_button.grid(row=10, column=1, padx=5, pady=5)       
         
+        
+        #Create regex options
+        self.options = options
+        self.selected_option = tk.StringVar()
+        self.selected_option.set(self.options[0])
+        self.regex_selector()
+
+           
     def rename_running_files(self):
         renamed = False
         self.RunningRenamedCounter=0
-        self.RunningTotalCounter=0
+        self.RunningTotalCounter=0   
+        selected_value = self.selected_option.get()
+        if selected_value == 'host-name name1;':
+            selected_search = r'host-name\s+(\S+);'
+        elif selected_value == 'hostname "name2"':
+            selected_search = r'hostname\s+"(\S+)"'
+        elif selected_value == 'host-name "name3"':
+            selected_search = r'host-name\s+"(\S+)"'           
+        elif selected_value == 'hostname name4':
+            selected_search = r'hostname\s+\"?(\S+?)\"'
         if  self.sourcerunning_dir and self.destrunning_dir:
             # Loop through all the subdirectories in the source directory
             for subdir, dirs, files in os.walk(self.sourcerunning_dir):
                 for filename in files:
-                    if filename.endswith('running.txt'):
+                    if filename.endswith('.txt'):
                         # Extract the hostname from the file
                         with open(os.path.join(subdir, filename), 'r') as f:
                             config = f.read()
-                        hostname_pattern = r'host-name\s+(\S+);'
+                        hostname_pattern = selected_search
                         hostname_match = re.search(hostname_pattern, config)
                         self.RunningTotalCounter +=1
                         if hostname_match:
@@ -170,6 +196,15 @@ class FileRenamer:
         self.TxtTotalCounter=0
         today = datetime.date.today().strftime("%Y-%m-%d")
         directory_path = os.path.join(self.destname_dir, today)
+        selected_value = self.selected_option.get()
+        if selected_value == 'host-name name1;':
+            selected_search = r'host-name\s+(\S+);'
+        elif selected_value == 'hostname "name2"':
+            selected_search = r'hostname\s+"(\S+)"'
+        elif selected_value == 'host-name "name3"':
+            selected_search = r'host-name\s+"(\S+)"'           
+        elif selected_value == 'hostname name4':
+            selected_search = r'hostname\s+\"?(\S+?)\"'
         if self.sourcenames_dir and self.destname_dir:
             # Loop through all the subdirectories in the source directory
             for subdir, dirs, files in os.walk(self.sourcenames_dir):
@@ -178,7 +213,7 @@ class FileRenamer:
                         # Extract the hostname from the file
                         with open(os.path.join(subdir, filename), 'r') as f:
                             config = f.read()
-                        hostname_pattern = r'host-name\s+(\S+);'
+                        hostname_pattern = selected_search
                         hostname_match = re.search(hostname_pattern, config)
                         self.TxtTotalCounter +=1
                         if hostname_match:
